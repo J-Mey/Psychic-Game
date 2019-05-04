@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Word Guess Game</title>
+</head>
+
+<body>
+
+    <div>
+        <h1>The Psychic Game</h1>
+        <p>Guess what letter I'm thinking of</p>
+        <p id="wins-text">Wins:</p>
+        <p id="losses-text">Losses:</p>
+        <p id="guesses-left-text">Guesses Left:</p>
+        <p id="guesses-text">Your Guesses so far:</p>
+        <p id="computerchoice-text">com:</p>
+    </div>
+
+      <script type="text/javascript">
+
+      var letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+
+      var wins = 0;
+      var losses = 0;
+      var guessLeft = 9;
+      var guesses = 0;
+      
+
+      var computerChoiceText = document.getElementById("computerchoice-text");
+      var winsText = document.getElementById("wins-text");
+      var loseText = document.getElementById("losses-text");
+      var guessLeftText = document.getElementById("guesses-left-text");
+      var guessText = document.getElementById("guesses-text");
+
+      document.onkeyup = function(event) { 
+        var userGuess = event.key;
+        var guessedLetters = ""
+
+        var computerChoice = letters[Math.floor(Math.random() * letters.length)];
+
+       
+       // if (userGuess = letters[Math.floor(Math.random() * letters.length)]) {
+
+        // for(var i=0; i < 9; i++)  {}
+          
+          
+         
+        
+
+        if (userGuess === computerChoice){
+            wins++;
+            reset();
+        }
+        
+        else {
+          guessLeft--;
+        }
+
+        if (guessLeft === 0) {
+          losses++;
+          reset();
+        } 
+
+         function reset() {
+           guessLeft = 9;
+         }
+         
+      guessedLetters = userGuess + guessedLetters;
+
+      computerChoiceText.textContent = "com: " + computerChoice;
+      winsText.textContent = "Wins: " + wins;
+      loseText.textContent = "Losses: " + losses;
+      guessLeftText.textContent = "Guesses Left: " + guessLeft;
+      guessText.textContent = "Your Guesses so far: " + guessedLetters;
+      
+       // }
+        }
+
+      
+
+
+
+
+
+
+      </script>
+</body>
+</html>
